@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e7c8dd;
+    color: #86626e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.curved-edge {
+    position: absolute;
+    bottom: 0%;
+    left:0%;
+    --c: 50%; /* control the curvature (works with percentage) */
+    z-index: -1;
+    height: 50%;
+    width: 100%;
+    /* you can also update the 60%  */
+    mask: radial-gradient(60% var(--c) at top,#0000 calc(100% - 2px),#000);
+    background: #dbafc1;
+  }
+
+.rounded-edge {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    height: 50%;
+    width: 50%;
+    aspect-ratio: 3/2;
+    z-index: -1;
+    /* update the 85% to control the curvature
+       you can also update the 50% to control the position
+    */
+    clip-path: ellipse(85% 100% at 50% 100%);
+    background: #dbafc1;
+  }
+
+.container {
+    position:relative;
+    background-color: #defffc;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px #86626e;
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #86626e;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #86626e;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #86626e;
+    color: #e2e4f6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #dbafc1;
+}
+
+ul {
+    margin-top: 20px;
+    list-style-type: none;
+}
