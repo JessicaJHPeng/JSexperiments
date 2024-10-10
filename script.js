@@ -17,7 +17,7 @@ function handleTaskSubmission(event) {
 }
 
 function addTaskToBackend(task) {
-  fetch ("https://jessicas-js-experiments.onrender.com/tasks", {
+  fetch ("http://localhost:3000/tasks", {
     method: "POST", // We're sending data to the server
     headers: {
       "Content-Type": "application/json" // Tell the server we're sending JSON
@@ -26,7 +26,7 @@ function addTaskToBackend(task) {
   })
   .then ((response) => response.json()) // Parse the response as JSON
   .then ((newTask) => {
-    addTaskToList(newTask); // Add the new task to the DOM
+    addCommentWithDelete(newTask); // Add the new task to the DOM
   })
   .catch ((error) => {
     console.error("Error adding task:", error); // Handle any errors
@@ -34,7 +34,7 @@ function addTaskToBackend(task) {
 }
 
 function deleteTaskFromBackend (taskId, taskElement) {
-  fetch(`https://jessicas-js-experiments.onrender.com/tasks/${taskId}`, {
+  fetch(`http://localhost:3000/tasks/${taskId}`, {
     method: "DELETE"
   })
   .then (() => {
@@ -46,6 +46,24 @@ function deleteTaskFromBackend (taskId, taskElement) {
 }
 
 function addTaskToList(task) {
+  let taskList = document.getElementById("taskList");
+  let newTask = document.createElement("li");
+  newTask.textContent = task.task;
+
+    // Create a delete button
+  // const deleteButton = document.createElement("button");
+  // deleteButton.textContent = "Delete";
+
+  // // Add event listener for the delete button
+  // deleteButton.addEventListener("click", function () {
+  //   deleteTaskFromBackend(task.id, newTask);
+  // });
+
+  // newTask.appendChild(deleteButton);
+  taskList.appendChild(newTask);
+}
+
+function addCommentWithDelete(task) {
   let taskList = document.getElementById("taskList");
   let newTask = document.createElement("li");
   newTask.textContent = task.task;
@@ -72,7 +90,7 @@ document
 window.addEventListener("DOMContentLoaded", fetchTasks);
 
 function fetchTasks() {
-  fetch("https://jessicas-js-experiments.onrender.com/tasks") // Send a GET request to the server
+  fetch("http://localhost:3000/tasks") // Send a GET request to the server
   .then((response) => response.json()) // Convert the response to JSON
   .then((tasks) => {
     const taskList = document.getElementById("taskList");
