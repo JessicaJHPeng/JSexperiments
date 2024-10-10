@@ -9,27 +9,27 @@ app.use(cors());
 // Use express.json() to parse incoming JSON requests
 app.use(express.json());
 
-let tasks = [ // In-memory array to store tasks
-    { id: 1, task: "Great website! Really shows your mastery with HTML and CSS." }
+let comments = [ // In-memory array to store comments
+    { id: 1, comment: "Great website! Really shows your mastery with HTML and CSS." }
 ];
 
-// GET route to send the list of tasks to the frontend
-app.get("/tasks", (req, res) => {
-    res.json(tasks); // Send the tasks array as a JSON response
+// GET route to send the list of comments to the frontend
+app.get("/comments", (req, res) => {
+    res.json(comments); // Send the comments array as a JSON response
 });
 
-app.post("/tasks", (req, res) => {
-    const newTask = {
-        id: tasks.length + 1, // Assign a unique ID
-        task: req.body.task // Get the task from the request body
+app.post("/comments", (req, res) => {
+    const newComment = {
+        id: comments.length + 1, // Assign a unique ID
+        comment: req.body.comment // Get the comment from the request body
     };
-    tasks.push(newTask) ; // Add to tasks array
-    res.json(newTask) ; // Send back the new task
+    comments.push(newComment) ; // Add to comments array
+    res.json(newComment) ; // Send back the new comment
 });
 
-app.delete("/tasks/:id", (req, res) => {
-    const taskId = parseInt(req.params.id); // Convert id to integer
-    tasks = tasks.filter((task) => task.id != taskId) ; // Remove the task
+app.delete("/comments/:id", (req, res) => {
+    const commentId = parseInt(req.params.id); // Convert id to integer
+    comments = comments.filter((comment) => comment.id != commentId) ; // Remove the comment
     res.sendStatus(200) ; // Send OK status
 });
 

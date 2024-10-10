@@ -1,54 +1,54 @@
-function handleTaskSubmission(event) {
+function handleCommentSubmission(event) {
   event.preventDefault(); // Prevent the form from refreshing
 
-  // Get the task input value
-  let taskInputValue = document.getElementById("taskInput").value;
+  // Get the comment input value
+  let commentInputValue = document.getElementById("commentInput").value;
 
-  if (taskInputValue.length > 20) {
-    alert("Task is too long. Please limit it to 20 characters.");
+  if (commentInputValue.length > 100) {
+    alert("Comment is too long. Please limit it to 100 characters.");
   } else {
-    // If valid, log the task to the console
-    console.log("Task entered:", taskInputValue);
-    addTaskToBackend(taskInputValue);
+    // If valid, log the comment to the console
+    console.log("Comment entered:", commentInputValue);
+    addCommentToBackend(commentInputValue);
 
     // Clear the input field after submission
-    document.getElementById("taskInput").value = "";
+    document.getElementById("commentInput").value = "";
   }
 }
 
-function addTaskToBackend(task) {
-  fetch ("https://jessicas-js-experiments.onrender.com/tasks", {
+function addCommentToBackend(comment) {
+  fetch ("https://jessicas-js-experiments.onrender.com/comments", {
     method: "POST", // We're sending data to the server
     headers: {
       "Content-Type": "application/json" // Tell the server we're sending JSON
     },
-    body: JSON.stringify({ task }) // Convert the task into a JSON string
+    body: JSON.stringify({ comment }) // Convert the comment into a JSON string
   })
   .then ((response) => response.json()) // Parse the response as JSON
-  .then ((newTask) => {
-    addCommentWithDelete(newTask); // Add the new task to the DOM
+  .then ((newComment) => {
+    addCommentWithDelete(newComment); // Add the new comment to the DOM
   })
   .catch ((error) => {
-    console.error("Error adding task:", error); // Handle any errors
+    console.error("Error adding comment:", error); // Handle any errors
   });
 }
 
-function deleteTaskFromBackend (taskId, taskElement) {
-  fetch(`https://jessicas-js-experiments.onrender.com/tasks/${taskId}`, {
+function deleteCommentFromBackend (commentId, commentElement) {
+  fetch(`https://jessicas-js-experiments.onrender.com/comments/${commentId}`, {
     method: "DELETE"
   })
   .then (() => {
-    taskElement.remove(); // Remove from the page
+    commentElement.remove(); // Remove from the page
   })
   .catch ((error) => {
-    console.error("Error deleting task:", error) ;
+    console.error("Error deleting comment:", error) ;
   });
 }
 
-function addTaskToList(task) {
-  let taskList = document.getElementById("taskList");
-  let newTask = document.createElement("li");
-  newTask.textContent = task.task;
+function addCommentToList(comment) {
+  let commentList = document.getElementById("commentList");
+  let newComment = document.createElement("li");
+  newComment.textContent = comment.comment;
 
     // Create a delete button
   // const deleteButton = document.createElement("button");
@@ -56,17 +56,17 @@ function addTaskToList(task) {
 
   // // Add event listener for the delete button
   // deleteButton.addEventListener("click", function () {
-  //   deleteTaskFromBackend(task.id, newTask);
+  //   deleteCommentFromBackend(comment.id, newComment);
   // });
 
-  // newTask.appendChild(deleteButton);
-  taskList.appendChild(newTask);
+  // newComment.appendChild(deleteButton);
+  commentList.appendChild(newComment);
 }
 
-function addCommentWithDelete(task) {
-  let taskList = document.getElementById("taskList");
-  let newTask = document.createElement("li");
-  newTask.textContent = task.task;
+function addCommentWithDelete(comment) {
+  let commentList = document.getElementById("commentList");
+  let newComment = document.createElement("li");
+  newComment.textContent = comment.comment;
 
     // Create a delete button
   const deleteButton = document.createElement("button");
@@ -74,30 +74,30 @@ function addCommentWithDelete(task) {
 
   // Add event listener for the delete button
   deleteButton.addEventListener("click", function () {
-    deleteTaskFromBackend(task.id, newTask);
+    deleteCommentFromBackend(comment.id, newComment);
   });
 
-  newTask.appendChild(deleteButton);
-  taskList.appendChild(newTask);
+  newComment.appendChild(deleteButton);
+  commentList.appendChild(newComment);
     
 }
 
 // Step 2: Attach the event listener to the form
 document
-  .getElementById("taskForm")
-  .addEventListener("submit", handleTaskSubmission);
+  .getElementById("commentForm")
+  .addEventListener("submit", handleCommentSubmission);
 
-window.addEventListener("DOMContentLoaded", fetchTasks);
+window.addEventListener("DOMContentLoaded", fetchComments);
 
-function fetchTasks() {
-  fetch("https://jessicas-js-experiments.onrender.com/tasks") // Send a GET request to the server
+function fetchComments() {
+  fetch("https://jessicas-js-experiments.onrender.com/comments") // Send a GET request to the server
   .then((response) => response.json()) // Convert the response to JSON
-  .then((tasks) => {
-    const taskList = document.getElementById("taskList");
-    taskList.innerHTML = ""; // Clear the existing list
-    tasks.forEach((task) => {
-      addTaskToList(task);
+  .then((comments) => {
+    const commentList = document.getElementById("commentList");
+    commentList.innerHTML = ""; // Clear the existing list
+    comments.forEach((comment) => {
+      addCommentToList(comment);
     });
   })
-  .catch((error) => console.error("Error fetching tasks:",error));
+  .catch((error) => console.error("Error fetching comments:",error));
 }
