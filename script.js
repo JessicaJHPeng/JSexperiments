@@ -17,7 +17,7 @@ function handleTaskSubmission(event) {
 }
 
 function addTaskToBackend(task) {
-  fetch ("http://localhost:3000/tasks", {
+  fetch ("https://jessicas-js-experiments.onrender.com/tasks", {
     method: "POST", // We're sending data to the server
     headers: {
       "Content-Type": "application/json" // Tell the server we're sending JSON
@@ -34,7 +34,7 @@ function addTaskToBackend(task) {
 }
 
 function deleteTaskFromBackend (taskId, taskElement) {
-  fetch(`http://localhost:3000/tasks/${taskId}`, {
+  fetch(`https://jessicas-js-experiments.onrender.com/tasks/${taskId}`, {
     method: "DELETE"
   })
   .then (() => {
@@ -90,7 +90,7 @@ document
 window.addEventListener("DOMContentLoaded", fetchTasks);
 
 function fetchTasks() {
-  fetch("http://localhost:3000/tasks") // Send a GET request to the server
+  fetch("https://jessicas-js-experiments.onrender.com/tasks") // Send a GET request to the server
   .then((response) => response.json()) // Convert the response to JSON
   .then((tasks) => {
     const taskList = document.getElementById("taskList");
