@@ -53,6 +53,28 @@ body {
   width: 100%;
 }
 
+.container > div > sparkle1 {
+  position: absolute;
+  bottom: -35px;
+  right: 0px;
+  z-index: 4;
+  color: #ccb4c5;
+  transform:scale(1,1.25);
+  user-select: none; 
+  font-size: 80px;
+}
+
+.container > div > sparkle2 {
+  position: absolute;
+  bottom: 20px;
+  right: -10px;
+  z-index: 4;
+  color: #ccb4c5;
+  transform:scale(1,1.25);
+  user-select: none; 
+  font-size: 40px;
+}
+
 .curved-edge-front {
     position: fixed;
     bottom: 0%;
@@ -110,17 +132,11 @@ body {
   }
 
 .sparkle {
-    position:relative;
-    height: 300px;
-    width: 250px;
-    background: #a16db7;
+    position: absolute;
     z-index: 4;
-    mask: radial-gradient(#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
-  
-    /* if you will use a different unit than px consider round()
-     height: round(__,1px);
-     width: round(__,1px);
-    */
+    color: #a16db7;
+    transform:scale(1,1.25);
+    user-select: none; 
   }
 
 h1 {
