@@ -55,8 +55,8 @@ body {
 
 .container > div > sparkle1 {
   position: absolute;
-  bottom: -35px;
-  right: 0px;
+  bottom: -47px;
+  right: -10px;
   z-index: 4;
   color: #ccb4c5;
   transform:scale(1,1.25);
@@ -66,8 +66,8 @@ body {
 
 .container > div > sparkle2 {
   position: absolute;
-  bottom: 20px;
-  right: -10px;
+  bottom: 10px;
+  right: -17px;
   z-index: 4;
   color: #ccb4c5;
   transform:scale(1,1.25);
@@ -78,7 +78,7 @@ body {
 .curved-edge-front {
     position: fixed;
     bottom: 0%;
-    left:0%;
+    right:0%;
     --c: 30%; /* control the curvature (works with percentage) */
     z-index: 2;
     height: 30%;
@@ -91,7 +91,7 @@ body {
 .rounded-edge-front {
     position: fixed;
     bottom: 0%;
-    right: 0%;
+    left: 0%;
     height: 30%;
     width: 50%;
     aspect-ratio: 3/2;
@@ -106,7 +106,7 @@ body {
   .curved-edge-back {
     position: fixed;
     bottom: 0%;
-    right:0%;
+    left:0%;
     --c: 40%; /* control the curvature (works with percentage) */
     z-index: 1;
     height: 40%;
@@ -119,7 +119,7 @@ body {
 .rounded-edge-back {
     position: fixed;
     bottom: 0%;
-    left: 0%;
+    right: 0%;
     height: 38.5%;
     width: 50%;
     aspect-ratio: 3/2;
