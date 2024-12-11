@@ -9,28 +9,30 @@
     src: url(Montserrat-VariableFont_wght.ttf);
   }
 
-body {
+body {  
     font-family: Montserrat, sans-serif;
     background-color: #f9edc2;
     color: #5d3277;
     display: flex;
     height: 100vh;
-    background-size: 50px 50px;
+    background-size: 60px 60px;
     background-image:
     linear-gradient(to right, #f8f9f4 3px, transparent 1px),
     linear-gradient(to bottom, #f8f9f4 3px, transparent 1px);
+    background-attachment: fixed;
 }
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     padding: 10px 16px;
     background: #5d3277;
     color: #f8f9f4;
+    height: 100vh;
   }
 
 .curved-edge-front {
-    position: absolute;
+    position: fixed;
     bottom: 0%;
     left:0%;
     --c: 30%; /* control the curvature (works with percentage) */
@@ -43,7 +45,7 @@ body {
   }
 
 .rounded-edge-front {
-    position: absolute;
+    position: fixed;
     bottom: 0%;
     right: 0%;
     height: 30%;
@@ -58,7 +60,7 @@ body {
   }
 
   .curved-edge-back {
-    position: absolute;
+    position: fixed;
     bottom: 0%;
     right:0%;
     --c: 40%; /* control the curvature (works with percentage) */
@@ -71,7 +73,7 @@ body {
   }
 
 .rounded-edge-back {
-    position: absolute;
+    position: fixed;
     bottom: 0%;
     left: 0%;
     height: 38.5%;
@@ -100,19 +102,28 @@ body {
   }
 
 .container {
-    margin: auto;
-    position:relative;
-    background-color: #f8f9f4;
+    margin: 0 auto;
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
     z-index: 3;
-    padding: 20px;
-    border-radius: 10px;
+    row-gap: 5vh;
+}
+
+.container > div {
+    margin: auto;
+    position: relative;
+    background-color: #f8f9f4;
+    padding: 1em 2.5ch;
+    border-radius: 15px;
     box-shadow: 10px 10px 0px #5d3277;
-    width: 400px;
+    width: 50%;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 6px;
+    margin-bottom: 9px;
 }
 
 h3 {
@@ -120,19 +131,26 @@ h3 {
     font-weight: normal;
 }
 
+p {
+  margin-bottom: 0.5em;
+  font-weight: normal;
+}
+
 form {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    align-content: space-between;
 }
 
 input {
-    width: 75%;
+    width: 85%;
     padding: 10px;
     border: 1px solid #5d3277;
     border-radius: 5px;
 }
 
 button {
+    margin-left: 2ch;
     padding: 10px;
     background-color: #5d3277;
     color: #f8f9f4;

@@ -47,7 +47,7 @@ function deleteCommentFromBackend (commentId, commentElement) {
 
 function addCommentToList(comment) {
   let commentList = document.getElementById("commentList");
-  let newComment = document.createElement("li");
+  let newComment = document.createElement("p");
   newComment.textContent = comment.comment;
 
     // Create a delete button
