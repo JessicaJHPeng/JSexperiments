@@ -55,8 +55,8 @@ body {
 
 .container > div > sparkle1 {
   position: absolute;
-  bottom: -47px;
-  right: -10px;
+  bottom: -35px;
+  right: 0px;
   z-index: 4;
   color: #ccb4c5;
   transform:scale(1,1.25);
@@ -66,8 +66,8 @@ body {
 
 .container > div > sparkle2 {
   position: absolute;
-  bottom: 10px;
-  right: -17px;
+  bottom: 20px;
+  right: -10px;
   z-index: 4;
   color: #ccb4c5;
   transform:scale(1,1.25);
